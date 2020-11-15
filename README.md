@@ -1,2 +1,2 @@
-# giwaxs_broadening
+# GIWAXS Broadening
 Module for calculating GIWAXS broadening.
