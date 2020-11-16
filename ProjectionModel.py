@@ -1,19 +1,39 @@
 import numpy as np
 
 
+def _validate(variable) -> np.array:
+    if isinstance(variable, int) or isinstance(variable, float):
+        return np.array([variable])
+    elif isinstance(chi, list):
+        return np.array(variable)
+    elif not isinstance(variable, np.array):
+        raise TypeError
+    elif len(variable.shape) > 1:
+        raise TypeError
+    else:
+        return variable
+
+
 class ProjectionModel:
 
     def __init__(self, chi, x_det, two_theta, beam_diameter, radial_divergence):
-        self.chi = chi * np.pi / 180
-        self.x_d = x_det
-        self.two_theta = two_theta * np.pi / 180
-        self.w_0 = beam_diameter
-        self.delta = radial_divergence * 1E-3
-        self.broadening = np.zeros((len(self.chi),
-                                    len(self.x_d),
-                                    len(self.two_theta),
-                                    len(self.w_0),
-                                    len(self.delta)))
+        """
+
+        :param chi: Incidence angle of beam on to sample in degrees
+        :param x_det: Distance from sample to detector along the beam in mm
+        :param two_theta: Diffraction angle in degrees
+        :param beam_diameter: Beam diameter at the sample position in mm
+        :param radial_divergence: Radial divergence of the beam in mrad, positive converging, negative diverging
+        """
+        self.chi = _validate(chi).reshape((-1, 1, 1, 1, 1)) * np.pi / 180
+        self.x_d = _validate(x_det).reshape((1, -1, 1, 1, 1))
+        self.two_theta = _validate(two_theta).reshape((1, 1, -1, 1, 1)) * np.pi / 180
+        self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1))
+        self.delta = _validate(radial_divergence).reshape((1, 1, 1, 1, -1)) * 1e-3
+
+        tmp = self.chi+self.x_d+self.two_theta+self.w_0+self.delta
+        self.broadening = np.zeros(tmp.shape)
+
         self.calculate()
 
     def calculate(self):
@@ -29,9 +49,28 @@ class ProjectionModel:
 
 
 if __name__ == "__main__":
-    test = ProjectionModel(np.array([2]),
-                           np.array([300]),
-                           np.array([45]),
-                           np.array([0.1]),
-                           np.array([1]))
-    print(test.broadening*180/np.pi)
+    # import matplotlib.pyplot as plt
+    divergence = [1.1, 2.2]
+    distance = [320, 500]
+    two_thetas = [15, 45]
+    w0 = [0.1, 2]
+    chi = [2, 5]
+    test = ProjectionModel(chi,
+                           distance,
+                           two_thetas,
+                           w0,
+                           divergence)
+    print(test.broadening)
+    # divergence = np.linspace(0.0, 10, 1000)
+    # divergence = np.array([1.1])
+    # # distance = np.linspace(200, 2000, 1000)
+    # distance = np.array([500])
+    # two_thetas = np.linspace(5, 70, 1000)
+    # w0 = np.array([0.5])
+    # chi = np.array([5.])
+    # test = ProjectionModel(chi,
+    #                        distance,
+    #                        two_thetas,
+    #                        w0,
+    #                        divergence)
+    # plt.plot(two_thetas, test.broadening * 180 / np.pi)
