@@ -4,7 +4,7 @@ import numpy as np
 def _validate(variable) -> np.ndarray:
     if isinstance(variable, int) or isinstance(variable, float):
         return np.array([variable])
-    elif isinstance(chi, list):
+    elif isinstance(variable, list):
         return np.array(variable)
     elif isinstance(variable, np.ndarray):
         if len(variable.shape) > 1:
@@ -49,6 +49,34 @@ class ProjectionModel:
         zl = np.tan(self.two_theta - self.delta) * (self.x_d - xpm) + zpm
         self.broadening = (np.arctan(zh / self.x_d) - np.arctan(zl / self.x_d)) * 180 / np.pi
 
+    def set_chi(self, chi, recalculate=True):
+        self.chi = _validate(chi).reshape((-1, 1, 1, 1, 1)) * np.pi / 180
+        if recalculate:
+            self.calculate()
+
+    def set_x_det(self, x_det, recalculate=True):
+        self.x_d = _validate(x_det).reshape((1, -1, 1, 1, 1))
+        if recalculate:
+            self.calculate()
+
+    def set_two_theta(self, two_theta, recalculate=True):
+        self.two_theta = _validate(two_theta).reshape((1, 1, -1, 1, 1)) * np.pi / 180
+        if recalculate:
+            self.calculate()
+
+    def set_beam_diameter(self, beam_diameter, recalculate=True):
+        self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1))
+        if recalculate:
+            self.calculate()
+
+    def set_radial_divergence(self, radial_divergence, recalculate=True):
+        self.delta = _validate(radial_divergence).reshape((1, 1, 1, 1, -1)) * 1e-3
+        if recalculate:
+            self.calculate()
+
+    def get_broadening(self) -> np.ndarray:
+        return self.broadening
+
 
 if __name__ == "__main__":
     # import matplotlib.pyplot as plt
@@ -56,8 +84,8 @@ if __name__ == "__main__":
     distance = [320, 500]
     two_thetas = [15, 45]
     w0 = [0.1, 2]
-    chi = [2, 5]
-    test = ProjectionModel(chi,
+    chis = [2, 5]
+    test = ProjectionModel(chis,
                            distance,
                            two_thetas,
                            w0,
