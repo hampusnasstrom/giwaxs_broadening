@@ -1,17 +1,18 @@
 import numpy as np
 
 
-def _validate(variable) -> np.array:
+def _validate(variable) -> np.ndarray:
     if isinstance(variable, int) or isinstance(variable, float):
         return np.array([variable])
     elif isinstance(chi, list):
         return np.array(variable)
-    elif not isinstance(variable, np.array):
-        raise TypeError
-    elif len(variable.shape) > 1:
-        raise TypeError
+    elif isinstance(variable, np.ndarray):
+        if len(variable.shape) > 1:
+            raise TypeError
+        else:
+            return variable
     else:
-        return variable
+        raise TypeError
 
 
 class ProjectionModel:
@@ -31,8 +32,9 @@ class ProjectionModel:
         self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1))
         self.delta = _validate(radial_divergence).reshape((1, 1, 1, 1, -1)) * 1e-3
 
-        tmp = self.chi+self.x_d+self.two_theta+self.w_0+self.delta
-        self.broadening = np.zeros(tmp.shape)
+        self.zh = None
+        self.zl = None
+        self.broadening = None
 
         self.calculate()
 
@@ -45,7 +47,7 @@ class ProjectionModel:
         xpm = b * np.cos(self.chi)
         zh = np.tan(self.two_theta + self.delta) * (self.x_d + xpp) - zpp
         zl = np.tan(self.two_theta - self.delta) * (self.x_d - xpm) + zpm
-        self.broadening = np.arctan(zh / self.x_d) - np.arctan(zl / self.x_d)
+        self.broadening = (np.arctan(zh / self.x_d) - np.arctan(zl / self.x_d)) * 180 / np.pi
 
 
 if __name__ == "__main__":
