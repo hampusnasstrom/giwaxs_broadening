@@ -1,10 +1,11 @@
 import sys
 from PyQt5 import QtWidgets
 import qdarkstyle
-from PyQt5.QtCore import QThreadPool, QSettings, QCoreApplication
+from PyQt5.QtCore import QThreadPool, QSettings, QCoreApplication, pyqtSlot
 from pyqtgraph.Qt import QtGui
 import ctypes
 
+from ProjectionModel import ProjectionModel
 from ui_files.ui_mainwindow import Ui_MainWindow
 import os
 
@@ -26,6 +27,36 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("Multithreading with maximum %d threads" % self.thread_pool.maxThreadCount())
 
         self.setupUi(self)
+
+        self.model = ProjectionModel()
+
+    @pyqtSlot(int)
+    def set_diameter(self, diameter: int):
+        self.model.set_beam_diameter(diameter)
+        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+
+    @pyqtSlot(int)
+    def set_divergence(self, divergence: int):
+        self.model.set_radial_divergence(divergence)
+        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+
+    @pyqtSlot(int)
+    def set_incidence(self, incidence: int):
+        self.model.set_chi(incidence)
+        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+
+    @pyqtSlot(int)
+    def set_x_pos(self, x_pos: int):
+        self.model.set_x_det(x_pos)
+        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+
+    @pyqtSlot(int)
+    def set_y_pos(self, y_pos: int):
+        pass
+
+    @pyqtSlot(int)
+    def set_z_pos(self, z_pos: int):
+        pass
 
 
 if __name__ == '__main__':

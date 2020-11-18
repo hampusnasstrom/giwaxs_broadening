@@ -17,19 +17,19 @@ def _validate(variable) -> np.ndarray:
 
 class ProjectionModel:
 
-    def __init__(self, chi, x_det, two_theta, beam_diameter, radial_divergence):
+    def __init__(self, chi=2, x_det=300, two_theta=45, beam_diameter=100, radial_divergence=0):
         """
 
         :param chi: Incidence angle of beam on to sample in degrees
         :param x_det: Distance from sample to detector along the beam in mm
         :param two_theta: Diffraction angle in degrees
-        :param beam_diameter: Beam diameter at the sample position in mm
+        :param beam_diameter: Beam diameter at the sample position in um
         :param radial_divergence: Radial divergence of the beam in mrad, positive converging, negative diverging
         """
         self.chi = _validate(chi).reshape((-1, 1, 1, 1, 1)) * np.pi / 180
         self.x_d = _validate(x_det).reshape((1, -1, 1, 1, 1))
         self.two_theta = _validate(two_theta).reshape((1, 1, -1, 1, 1)) * np.pi / 180
-        self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1))
+        self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1)) * 1e-3
         self.delta = _validate(radial_divergence).reshape((1, 1, 1, 1, -1)) * 1e-3
 
         self.zh = None
@@ -65,7 +65,7 @@ class ProjectionModel:
             self.calculate()
 
     def set_beam_diameter(self, beam_diameter, recalculate=True):
-        self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1))
+        self.w_0 = _validate(beam_diameter).reshape((1, 1, 1, -1, 1)) * 1e-3
         if recalculate:
             self.calculate()
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     divergence = [1.1, 2.2]
     distance = [320, 500]
     two_thetas = [15, 45]
-    w0 = [0.1, 2]
+    w0 = [100, 2000]
     chis = [2, 5]
     test = ProjectionModel(chis,
                            distance,

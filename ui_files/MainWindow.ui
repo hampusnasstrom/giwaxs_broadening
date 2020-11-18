@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>860</width>
-    <height>850</height>
+    <width>664</width>
+    <height>945</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,252 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
+     <widget class="QGroupBox" name="gb_beam">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <horstretch>2</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Beam</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="0" column="0">
+        <widget class="QWidget" name="divergence" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>3</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="1" column="0" colspan="2">
+           <widget class="QDoubleSpinBox" name="sb_divergence"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_middle_divergence">
+            <property name="text">
+             <string>15</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_top_divergence">
+            <property name="text">
+             <string>30</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_bottom_divergence">
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" rowspan="3">
+           <widget class="QSlider" name="slider_divergence">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="pageStep">
+             <number>5</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::NoTicks</enum>
+            </property>
+            <property name="tickInterval">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_divergence">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Divergence&lt;br/&gt;radial [mrad]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="Line" name="line_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QWidget" name="diameter" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_diameter">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Diameter&lt;br/&gt;[μm]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QDoubleSpinBox" name="sb_incidence_diameter"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_top_diameter">
+            <property name="text">
+             <string>5000</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" rowspan="3">
+           <widget class="QSlider" name="slider_diameter">
+            <property name="maximum">
+             <number>5000</number>
+            </property>
+            <property name="singleStep">
+             <number>50</number>
+            </property>
+            <property name="pageStep">
+             <number>500</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::NoTicks</enum>
+            </property>
+            <property name="tickInterval">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_middle_diameter">
+            <property name="text">
+             <string>2500</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_bottom_diameter">
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QFrame" name="frame_beam">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Energy [keV]:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QDoubleSpinBox" name="sb_energy"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Wavelength [Å]:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDoubleSpinBox" name="sb_wavelength"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Source:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="cb_source">
+            <item>
+             <property name="text">
+              <string>Ga</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Cu</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Custom</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
      <widget class="QGroupBox" name="gb_incidence">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
         <horstretch>2</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -26,9 +269,15 @@
       <property name="title">
        <string>Sample</string>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QWidget" name="widget" native="true">
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="0" column="0">
+        <widget class="QWidget" name="incidence" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>3</verstretch>
+          </sizepolicy>
+         </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_incidence">
@@ -58,6 +307,12 @@
           </item>
           <item row="2" column="1" rowspan="3">
            <widget class="QSlider" name="slider_incidence">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="pageStep">
+             <number>5</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -92,15 +347,24 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="0" column="1">
         <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QWidget" name="widget_2" native="true">
+       <item row="0" column="2">
+        <widget class="QWidget" name="diffraction" native="true">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_diffraction">
@@ -129,7 +393,7 @@
            </widget>
           </item>
           <item row="2" column="1" rowspan="3">
-           <widget class="QSlider" name="slider_incidence_diffraction">
+           <widget class="QSlider" name="slider_diffraction">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -164,13 +428,53 @@
          </layout>
         </widget>
        </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QFrame" name="frame_sample">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>92</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Material:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="cb_material">
+            <item>
+             <property name="text">
+              <string>LaB6</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
     <item>
      <widget class="QGroupBox" name="gb_x_det">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
         <horstretch>3</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -178,90 +482,24 @@
       <property name="title">
        <string>Detector</string>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QWidget" name="x_det" native="true">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="2" column="1" rowspan="3">
-           <widget class="QSlider" name="slider_incidence_x_det">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::NoTicks</enum>
-            </property>
-            <property name="tickInterval">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Position&lt;br/&gt;-x [mm]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_middle_x_det">
-            <property name="text">
-             <string>50</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QDoubleSpinBox" name="sb_incidence_x_det"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_top_x_det">
-            <property name="text">
-             <string>99</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_bottom_x_det">
-            <property name="text">
-             <string>0</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
+      <layout class="QGridLayout" name="gridLayout_10">
+       <item row="0" column="2">
         <widget class="QWidget" name="y_det" native="true">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="2" column="1" rowspan="3">
            <widget class="QSlider" name="slider_incidence_y_det">
+            <property name="maximum">
+             <number>2000</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -289,7 +527,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="label_middle_y_det">
             <property name="text">
-             <string>50</string>
+             <string>1000</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -302,7 +540,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_top_y_det">
             <property name="text">
-             <string>99</string>
+             <string>2000</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -322,18 +560,111 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="0" column="3">
         <widget class="Line" name="line_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="0" column="0">
+        <widget class="QWidget" name="x_det" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>3</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="2" column="1" rowspan="3">
+           <widget class="QSlider" name="slider_incidence_x_det">
+            <property name="maximum">
+             <number>2000</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::NoTicks</enum>
+            </property>
+            <property name="tickInterval">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Position&lt;br/&gt;-x [mm]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_middle_x_det">
+            <property name="text">
+             <string>1000</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QDoubleSpinBox" name="sb_incidence_x_det"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_top_x_det">
+            <property name="text">
+             <string>2000</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_bottom_x_det">
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
         <widget class="QWidget" name="z_det" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="2" column="1" rowspan="3">
            <widget class="QSlider" name="slider_incidence_z_det">
+            <property name="maximum">
+             <number>2000</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -361,7 +692,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="label_middle_z_det">
             <property name="text">
-             <string>50</string>
+             <string>1000</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -374,7 +705,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_top_z_det">
             <property name="text">
-             <string>99</string>
+             <string>2000</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -394,160 +725,66 @@
          </layout>
         </widget>
        </item>
+       <item row="1" column="0" colspan="5">
+        <widget class="QFrame" name="frame_detector">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>92</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QFormLayout" name="formLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Detector:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboBox">
+            <item>
+             <property name="text">
+              <string>Dectris Pilatus 1M</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Dectris Eiger 1M</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="gb_incidence_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>2</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="title">
-       <string>Beam</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QWidget" name="widget_3" native="true">
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_incidence_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Divergence&lt;br/&gt;radial [mrad]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QDoubleSpinBox" name="sb_incidence_2"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_top_incidence_2">
-            <property name="text">
-             <string>30</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1" rowspan="3">
-           <widget class="QSlider" name="slider_incidence_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::NoTicks</enum>
-            </property>
-            <property name="tickInterval">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_middle_incidence_2">
-            <property name="text">
-             <string>15</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_bottom_incidence_2">
-            <property name="text">
-             <string>0</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget_4" native="true">
-         <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_diffraction_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Diameter&lt;br/&gt;[μm]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QDoubleSpinBox" name="sb_incidence_diffraction_2"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_top_diffraction_2">
-            <property name="text">
-             <string>80</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1" rowspan="3">
-           <widget class="QSlider" name="slider_incidence_diffraction_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::NoTicks</enum>
-            </property>
-            <property name="tickInterval">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_middle_diffraction_2">
-            <property name="text">
-             <string>40</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_bottom_diffraction_2">
-            <property name="text">
-             <string>0</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+     </spacer>
     </item>
    </layout>
   </widget>
@@ -556,7 +793,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>860</width>
+     <width>664</width>
      <height>21</height>
     </rect>
    </property>
@@ -569,7 +806,14 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="GraphicsLayoutWidget" name="graphicsView"/>
+      <widget class="GraphicsLayoutWidget" name="graphicsView">
+       <property name="minimumSize">
+        <size>
+         <width>600</width>
+         <height>500</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -583,5 +827,110 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>slider_incidence</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_incidence()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>749</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>67</x>
+     <y>920</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_divergence</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_divergence()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>753</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>924</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_diameter</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_diameter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>726</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>169</x>
+     <y>924</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_incidence_x_det</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_x_pos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>449</x>
+     <y>729</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>917</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_incidence_y_det</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_y_pos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>720</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>534</x>
+     <y>921</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_incidence_z_det</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_z_pos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>621</x>
+     <y>748</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>622</x>
+     <y>920</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>set_incidence()</slot>
+  <slot>set_divergence()</slot>
+  <slot>set_diameter()</slot>
+  <slot>set_x_pos()</slot>
+  <slot>set_y_pos()</slot>
+  <slot>set_z_pos()</slot>
+ </slots>
 </ui>
