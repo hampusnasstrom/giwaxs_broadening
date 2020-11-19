@@ -5,9 +5,13 @@ from PyQt5.QtCore import QThreadPool, QSettings, QCoreApplication, pyqtSlot
 from pyqtgraph.Qt import QtGui
 import ctypes
 
+import pyqtgraph as pg
+
+from GiwaxsDetector import Detector
 from ProjectionModel import ProjectionModel
 from ui_files.ui_mainwindow import Ui_MainWindow
 import os
+import numpy as np
 
 myappid = 'nasstrom.giwaxs.0.0.1'  # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
@@ -17,6 +21,7 @@ ORGANIZATION_DOMAIN = 'https://github.com/hampusnasstrom'
 APPLICATION_NAME = 'giwaxs_broadening'
 
 os.environ['PYQTGRAPH_QT_LIB'] = 'PyQt5'
+pg.setConfigOption('background', pg.mkColor(25, 35, 45))
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -28,27 +33,48 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.setupUi(self)
 
+        self.plot_item = self.graphics_layout.addPlot()
+        self._plot_ref = None
+
         self.model = ProjectionModel()
+        self.detector = Detector(detector='pilatus_1m')
+
+        self.eval_points = 1043
+        self.two_theta = np.zeros(self.eval_points)
+
+    def update_plot(self):
+        # Check if first time plotting
+        if not self._plot_ref:
+            # If first time, add plot
+            self._plot_ref = self.plot_item.plot(self.two_theta, self.model.get_broadening().reshape((-1,)))
+        else:
+            # Else, update previous plot
+            self._plot_ref.setData(self.two_theta, self.model.get_broadening().reshape((-1,)))
 
     @pyqtSlot(int)
     def set_diameter(self, diameter: int):
         self.model.set_beam_diameter(diameter)
-        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+        self.update_plot()
 
     @pyqtSlot(int)
     def set_divergence(self, divergence: int):
         self.model.set_radial_divergence(divergence)
-        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+        self.update_plot()
 
     @pyqtSlot(int)
     def set_incidence(self, incidence: int):
         self.model.set_chi(incidence)
-        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+        self.update_plot()
 
     @pyqtSlot(int)
     def set_x_pos(self, x_pos: int):
         self.model.set_x_det(x_pos)
-        print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
+        self.detector.set_x_pos(x_pos)
+        two_theta_low, two_theta_high = self.detector.get_two_theta()
+        self.two_theta = np.linspace(two_theta_low, two_theta_high, self.eval_points)
+        self.model.set_two_theta(self.two_theta)
+        self.update_plot()
+        # print('Broadening is %.5f deg. 2theta' % self.model.get_broadening())
 
     @pyqtSlot(int)
     def set_y_pos(self, y_pos: int):
@@ -56,7 +82,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     @pyqtSlot(int)
     def set_z_pos(self, z_pos: int):
-        pass
+        self.detector.set_z_pos(z_pos)
+        two_theta_low, two_theta_high = self.detector.get_two_theta()
+        self.two_theta = np.linspace(two_theta_low, two_theta_high, self.eval_points)
+        self.model.set_two_theta(self.two_theta)
+        self.update_plot()
 
 
 if __name__ == '__main__':
