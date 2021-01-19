@@ -80,11 +80,11 @@ class ProjectionModel:
 
 if __name__ == "__main__":
     # import matplotlib.pyplot as plt
-    divergence = [1.1, 2.2]
-    distance = [320, 500]
-    two_thetas = [15, 45]
-    w0 = [100, 2000]
-    chis = [2, 5]
+    divergence = [0.55]
+    distance = [422]
+    two_thetas = [20, 40]
+    w0 = [500]
+    chis = [10.5]
     test = ProjectionModel(chis,
                            distance,
                            two_thetas,
